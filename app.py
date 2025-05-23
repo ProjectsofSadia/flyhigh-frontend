@@ -1,4 +1,3 @@
-
 import pandas as pd
 import streamlit as st
 import plotly.express as px
@@ -8,20 +7,15 @@ from sklearn.metrics import classification_report, confusion_matrix
 from fpdf import FPDF
 from datetime import datetime
 
-# Load dataset
-df = pd.read_csv("FlyHigh_Airline_NoShow_Data.csv")
 
-# Page config
+df = pd.read_csv("FlyHigh_Airline_NoShow_Data.csv")
 st.set_page_config(page_title="FlyHigh.AI", layout="wide")
 st.title("✈️ FlyHigh.AI - Airline Overbooking Optimizer")
 st.subheader("Predict no-shows & supercharge airline revenue")
-
-# Sidebar
 st.sidebar.header("🔍 Explore the Data")
 if st.sidebar.checkbox("Show raw data"):
     st.write(df.head())
 
-# EDA
 st.header("📊 Exploratory Data Analysis")
 col1, col2 = st.columns(2)
 
@@ -35,19 +29,16 @@ with col2:
                   title="Seat Class vs Ticket Price")
     st.plotly_chart(fig2, use_container_width=True)
 
-# Feature Engineering
 df_encoded = pd.get_dummies(df.drop(['BookingID', 'PassengerName', 'FlightDate'], axis=1), drop_first=True)
 X = df_encoded.drop('NoShow', axis=1)
 y = df_encoded['NoShow']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Model
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 accuracy = model.score(X_test, y_test)
 y_pred = model.predict(X_test)
 
-# Model Metrics
 st.header("🧠 Model Performance")
 st.markdown(f"**Random Forest Accuracy:** `{accuracy * 100:.2f}%`")
 
@@ -57,8 +48,6 @@ st.write(pd.DataFrame(cm, columns=["Predicted No", "Predicted Yes"], index=["Act
 
 st.markdown("**Classification Report:**")
 st.text(classification_report(y_test, y_pred))
-
-# Prediction Form
 st.header("🧾 Try It Yourself: Predict & Book a Flight")
 
 with st.form(key='predict_form'):
@@ -100,7 +89,6 @@ if submit:
 
     st.success(f"Prediction: {'❌ Will No-Show' if prediction else '✅ Will Show Up'} ({prob*100:.1f}% chance)")
 
-    # Generate PDF ticket
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=12)
@@ -119,7 +107,6 @@ if submit:
     with open(pdf_output, "rb") as file:
         st.download_button(label="📄 Download Ticket (PDF)", data=file, file_name="FlyHigh_Ticket.pdf")
 
-# Feedback
 st.header("💬 Feedback")
 with st.form("feedback_form"):
     name = st.text_input("Your Name")

@@ -1,0 +1,15 @@
+streamlit
+pandas
+numpy
+scikit-learn
+joblib
+plotly
+fpdf
+streamlit-authenticator
+flask
+flask-cors
+google-generativeai
+python-dotenv
+
+
+
