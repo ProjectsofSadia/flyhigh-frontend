@@ -6,10 +6,10 @@ Designed with a sleek UI, interactive dashboards, and real-life features like pa
 ## 🚀 Features
 
 ✅ AI-powered no-show prediction (Random Forest)  
-✅ Animated overbooking simulator (Plotly)  
+✅ Overbooking simulator (Plotly)  
 ✅ Safe overflow limits + AI insight engine  
 ✅ Save models, export CSV reports, generate invoices  
-✅ Beautiful gradient dashboard UI (Streamlit + CSS)  
+✅ Dashboard UI (Streamlit + CSS)  
 ✅ Flight route, date, and time selectors  
 ✅ Analyst note-taking and download  
 ✅ Login + CAPTCHA for protected purchases
