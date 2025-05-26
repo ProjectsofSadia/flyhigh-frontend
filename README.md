@@ -21,12 +21,6 @@ Designed with a sleek UI, interactive dashboards, and real-life features like pa
 - **Plotly** for animated visualizations  
 - **Custom CSS** for enterprise UI  
 - **Git + GitHub** for version control & deployment
-  
-## 🌐 Live Demo
-
-👉 [https://flyhigh.streamlit.app](https://flyhigh.streamlit.app)
-
-> All in English. No setup required.
 
 ## 🧠 Try It Locally
 ```bash
